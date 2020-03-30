@@ -7,8 +7,28 @@
     <script src="js/Init.js"></script>
     <script src="js/navbar.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBnBa-76xV5FN_pD6Rg-27Ad0bm3q3rYvQ",
+            authDomain: "corona-invaders.firebaseapp.com",
+            databaseURL: "https://corona-invaders.firebaseio.com",
+            projectId: "corona-invaders",
+            storageBucket: "corona-invaders.appspot.com",
+            messagingSenderId: "638389868093",
+            appId: "1:638389868093:web:23b50412f9e44b89da3c54",
+            measurementId: "G-HYRT2KCPF9"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 
 
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/homepage.css" type="text/css" media="screen" />
     </head>
@@ -32,7 +52,7 @@
 
         <!-- The Modal -->
         <div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'"
+  <span id="close-login-form-icon"
         class="close" title="Close Modal">&times;</span>
 
             <!-- Modal Content -->
@@ -40,7 +60,7 @@
 
                 <div class="container">
                     <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input class="input input" type="text" placeholder="Enter Username" name="uname" required>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" required>
