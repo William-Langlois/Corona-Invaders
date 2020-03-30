@@ -1,36 +1,20 @@
 <!DOCTYPE html>
 <html lang="FR">
-<head>
-    <meta charset="UTF-8">
-    <title>Home - Corona-Invaders</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/Init.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/login.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Home - Corona-Invaders</title>
 
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/homepage.css" type="text/css" media="screen" />
+
     </head>
 
-    <body onload="Init()">
-    <header>
-
-        <nav>
-            <ul>
-                <li><a id="nav-link-home" class="nav-link-active" href="#">Home</a></li>
-                <li><a id="nav-link-register" href="#">Register</a></li>
-                <li><a id="nav-link-login" href="#">Login</a></li>
-                <li><a id="nav-link-play" href="#">Play</a></li>
-                <li><a id="nav-link-scoreboard" href="#">Scoreboard</a></li>
-                <li><a id="nav-link-profile" href="#">Profile</a></li>
-                <li><a id="nav-link-logout" href="#">Logout</a></li>
-
-            </ul>
+    <body class="slightly-moving">
+        <nav class="header navbar">
+   
         </nav>
-    </header>
-    <!-- Button to open the modal login form -->
-        <button onclick="document.getElementById('id01').style.display='block'">Login</button>
+        <!-- Button to open the modal login form -->
+        <button id="login">Login</button>
 
         <!-- The Modal -->
         <div id="id01" class="modal">
@@ -61,9 +45,10 @@
         </div>
 
         <div id="Planet-Container" class="container-fluid">
-            <div id="Planet" class="rotating">
+            <div id="Planet" class="rotating"> 
             </div>
         </div>
+        <script src="js/login.js"></script>
     </body>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

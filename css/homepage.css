@@ -91,4 +91,8 @@ body{
     animation:rotating 500s linear infinite;
 }
 
+#id01 {
+    display: none;
+}
+
 
