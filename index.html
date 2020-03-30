@@ -80,27 +80,26 @@
 
     <div id="id02" class="modal">
   <span id="close-register-form-icon"
-        class="close" title="Close Modal">&times;</span>
+        class="close" title="Close Modal2">&times;</span>
 
         <!-- Modal Content -->
         <form class="registerForm" action="js/register.js">
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Username" name="rname" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="rpsw" required>
 
-                <label for="psw"><b>Confirm Password</b></label>
-                <input type="password" placeholder="Confirm your password" name="psw2" required>
+                <label for="psw2"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Confirm your password" name="rpsw2" required>
 
                 <button type="submit">Register</button>
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
         </form>
     </div>
@@ -109,9 +108,6 @@
             <div id="Planet" class="rotating">
             </div>
         </div>
-
-    <script src="js/login.js"></script>
-    <script src="js/register.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/7.13.1/firebase-app.js"></script>
 
@@ -123,10 +119,11 @@
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
-
-    </body>
     <script src="js/login.js"></script>
     <script src="js/register.js"></script>
+
+    </body>
+
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>

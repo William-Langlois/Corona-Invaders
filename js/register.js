@@ -1,21 +1,23 @@
-var modal = document.getElementById('id02');
-const linkHome = document.getElementById('nav-link-home');
+const modal2 = document.getElementById('id02');
 const closeRegisterFormIcon = document.getElementById('close-register-form-icon');
 
 closeRegisterFormIcon.addEventListener('click', function () {
-    closeRegisterForm();
+    modal2.style.display = "none";
 
+    closeRegisterForm();
 });
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target === modal) {
-        closeRegisterForm = "none";
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+
+        closeRegisterForm();
     }
 };
 
 function closeRegisterForm() {
-    modal.style.display = "none";
+    modal2.style.display = "none";
     let lastActive = document.getElementsByClassName('nav-link-active');
     if (lastActive[0] != ""){
         lastActive[0].classList.remove('nav-link-active')
@@ -24,8 +26,8 @@ function closeRegisterForm() {
 }
 
 function validation() {
-    var username = document.getElementById("uname").value;
-    var password = document.getElementById("psw").value;
-    var password2 = document.getElementById("psw2").value;
+    var username = document.getElementById("rname").value;
+    var password = document.getElementById("rpsw").value;
+    var password2 = document.getElementById("rpsw2").value;
 
 };

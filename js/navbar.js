@@ -22,14 +22,15 @@ function NavInit() {
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkRegister.classList.add('nav-link-active')
+        linkRegister.classList.add('nav-link-active');
+        document.getElementById('id02').style.display='block'
     });
     linkLogin.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkLogin.classList.add('nav-link-active')
+        linkLogin.classList.add('nav-link-active');
         document.getElementById('id01').style.display='block'
     });
     linkPlay.addEventListener('click',function () {
