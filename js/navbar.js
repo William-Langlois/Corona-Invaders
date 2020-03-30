@@ -1,5 +1,6 @@
 function NavInit() {
 <!-- DOM Elements Variable -->
+
     const linkHome = document.getElementById('nav-link-home');
     const linkLogin = document.getElementById('nav-link-login');
     const linkRegister = document.getElementById('nav-link-register');
@@ -29,6 +30,7 @@ function NavInit() {
             lastActive[0].classList.remove('nav-link-active')
         }
         linkLogin.classList.add('nav-link-active')
+        document.getElementById('id01').style.display='block'
     });
     linkPlay.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
@@ -51,5 +53,6 @@ function NavInit() {
         }
         linkProfile.classList.add('nav-link-active')
     });
+
 }
 
