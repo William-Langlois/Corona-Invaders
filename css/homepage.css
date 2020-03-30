@@ -91,8 +91,18 @@ body{
     animation:rotating 500s linear infinite;
 }
 
-#id01 {
+.modal {
     display: none;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 90px;
 }
 
+.loginform {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid;
+    width: 30%;
+
+}
 
