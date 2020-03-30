@@ -53,6 +53,5 @@ function NavInit() {
         }
         linkProfile.classList.add('nav-link-active')
     });
-
 }
 
