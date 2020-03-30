@@ -8,25 +8,48 @@ function NavInit() {
     const linkProfile = document.getElementById('nav-link-profile');
     const linkLogout = document.getElementById('nav-link-logout');
 
-    let foo=1;
-    if(foo == 2){
-        linkLogin.classList.add('d-none');
-        linkRegister.classList.add('d-none');
+    linkHome.addEventListener('click',function () {
+        let lastActive = document.getElementsByClassName('nav-link-active');
+        if (lastActive[0] != ""){
+            lastActive[0].classList.remove('nav-link-active')
+        }
+        linkHome.classList.add('nav-link-active')
 
-        linkLogout.classList.remove('d-none');
-        linkProfile.classList.remove('d-none');
-        linkScoreboard.classList.remove('d-none');
-        linkPlay.classList.remove('d-none');
-
-    }
-    else{
-        linkLogin.classList.remove('d-none');
-        linkRegister.classList.remove('d-none');
-
-        linkLogout.classList.add('d-none');
-        linkProfile.classList.add('d-none');
-        linkScoreboard.classList.add('d-none');
-        linkPlay.classList.add('d-none');
-    }
+    });
+    linkRegister.addEventListener('click',function () {
+        let lastActive = document.getElementsByClassName('nav-link-active');
+        if (lastActive[0] != ""){
+            lastActive[0].classList.remove('nav-link-active')
+        }
+        linkRegister.classList.add('nav-link-active')
+    });
+    linkLogin.addEventListener('click',function () {
+        let lastActive = document.getElementsByClassName('nav-link-active');
+        if (lastActive[0] != ""){
+            lastActive[0].classList.remove('nav-link-active')
+        }
+        linkLogin.classList.add('nav-link-active')
+    });
+    linkPlay.addEventListener('click',function () {
+        let lastActive = document.getElementsByClassName('nav-link-active');
+        if (lastActive[0] != ""){
+            lastActive[0].classList.remove('nav-link-active')
+        }
+        linkPlay.classList.add('nav-link-active')
+    });
+    linkScoreboard.addEventListener('click',function () {
+        let lastActive = document.getElementsByClassName('nav-link-active');
+        if (lastActive[0] != ""){
+            lastActive[0].classList.remove('nav-link-active')
+        }
+        linkScoreboard.classList.add('nav-link-active')
+    });
+    linkProfile.addEventListener('click',function () {
+        let lastActive = document.getElementsByClassName('nav-link-active');
+        if (lastActive[0] != ""){
+            lastActive[0].classList.remove('nav-link-active')
+        }
+        linkProfile.classList.add('nav-link-active')
+    });
 }
 

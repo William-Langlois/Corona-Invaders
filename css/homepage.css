@@ -29,7 +29,9 @@ nav ul li a:hover {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
-
+.nav-link-active{
+    background-color: rgba(255, 50, 50,0.3);
+}
 
 body{
     width: 100vw;
