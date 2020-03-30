@@ -1,0 +1,28 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1605/Blue_nebula_galaxy-Expanse_Space_HD_Wallpaper_1366x768.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#Planet-Container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    margin-top: 45vh;
+}
+
+#Planet{
+    border-radius: 100%;
+    width: 100vw;
+    height: 100vw;
+    background-image: url('../resources/homeplanets/planet_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
