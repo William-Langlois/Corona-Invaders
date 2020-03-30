@@ -1,3 +1,36 @@
+nav {
+    width: 100%;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+nav ul li a {
+    font-family: calibri;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    border: solid 1px rgb(255, 255, 255);
+    border-radius: 10%;
+    background-color: rgba(255, 255, 255,0.1);
+    padding: 2%;
+    margin-top: 1vh;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+nav ul li a:hover {
+    border: solid 0.15em rgb(175, 0, 0);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+
 body{
     width: 100vw;
     height: 100vh;
@@ -55,6 +88,5 @@ body{
     -o-animation:rotating 500s linear infinite;
     animation:rotating 500s linear infinite;
 }
-
 
 
