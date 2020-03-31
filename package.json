@@ -2,6 +2,7 @@
   "name": "CoronaInvaders",
   "version": "1.0.0",
   "dependencies": {
-    "firebase": "^7.13.1"
+    "firebase": "^7.13.1",
+    "phaser": "^3.22.0"
   }
 }
