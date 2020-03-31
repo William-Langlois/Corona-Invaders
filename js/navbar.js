@@ -1,13 +1,13 @@
 function NavInit() {
 <!-- DOM Elements Variable -->
 
-    const linkHome = document.getElementById('nav-link-home');
-    const linkLogin = document.getElementById('nav-link-login');
-    const linkRegister = document.getElementById('nav-link-register');
-    const linkPlay = document.getElementById('nav-link-play');
-    const linkScoreboard = document.getElementById('nav-link-scoreboard');
-    const linkProfile = document.getElementById('nav-link-profile');
-    const linkLogout = document.getElementById('nav-link-logout');
+    var linkHome = document.getElementById('nav-link-home');
+    var linkLogin = document.getElementById('nav-link-login');
+    var linkRegister = document.getElementById('nav-link-register');
+    var linkPlay = document.getElementById('nav-link-play');
+    var linkScoreboard = document.getElementById('nav-link-scoreboard');
+    var linkProfile = document.getElementById('nav-link-profile');
+    var linkLogout = document.getElementById('nav-link-logout');
 
     linkHome.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
@@ -38,7 +38,12 @@ function NavInit() {
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkPlay.classList.add('nav-link-active')
+        linkPlay.classList.add('nav-link-active');
+        document.getElementById('Planet-Container').classList.add('d-none');
+        document.getElementById('coroned-navbar').classList.add('d-none');
+
+        InitGame();
+
     });
     linkScoreboard.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');

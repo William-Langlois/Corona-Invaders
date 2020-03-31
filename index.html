@@ -1,31 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="FR">
 <head>
     <meta charset="UTF-8">
     <title>Home - Corona-Invaders</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/Init.js"></script>
-    <script src="js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js" crossorigin="anonymous"></script>
+    <script src="./js/Init.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/coronaInvaders.js"></script>
+
 
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyBnBa-76xV5FN_pD6Rg-27Ad0bm3q3rYvQ",
-            authDomain: "corona-invaders.firebaseapp.com",
-            databaseURL: "https://corona-invaders.firebaseio.com",
-            projectId: "corona-invaders",
-            storageBucket: "corona-invaders.appspot.com",
-            messagingSenderId: "638389868093",
-            appId: "1:638389868093:web:23b50412f9e44b89da3c54",
-            measurementId: "G-HYRT2KCPF9"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
+
 
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,7 +25,7 @@
     <body onload="Init()">
     <header>
 
-        <nav>
+        <nav id="coroned-navbar">
             <ul>
                 <li><a id="nav-link-home" class="nav-link-active" href="#">Home</a></li>
                 <li><a id="nav-link-register" href="#">Register</a></li>
@@ -59,11 +48,11 @@
             <form class="loginform" action="js/login.js">
 
                 <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input class="input input" type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="input-lname"><b>Username</b></label>
+                    <input id="input-lname" class="input input" type="text" placeholder="Enter Username" name="lname" required>
 
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="input-lpwd"><b>Password</b></label>
+                    <input id="input-lpwd" type="password" placeholder="Enter Password" name="lpwd" required>
 
                     <button type="submit">Login</button>
                     <label>

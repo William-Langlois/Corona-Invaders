@@ -37,7 +37,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1605/Blue_nebula_galaxy-Expanse_Space_HD_Wallpaper_1366x768.jpg);
+    background-image: url('../resources/backgrounds/background1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -89,6 +89,10 @@ body{
     -moz-animation:rotating 500s linear infinite;
     -o-animation:rotating 500s linear infinite;
     animation:rotating 500s linear infinite;
+}
+
+.down{
+    display: none;
 }
 
 .modal {

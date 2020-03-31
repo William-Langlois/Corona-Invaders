@@ -1,7 +1,21 @@
 // Get the modal
-const modal = document.getElementById('id01');
-const linkHome = document.getElementById('nav-link-home');
-const closeLoginFormIcon = document.getElementById('close-login-form-icon');
+var modal = document.getElementById('id01');
+var linkHome = document.getElementById('nav-link-home');
+var closeLoginFormIcon = document.getElementById('close-login-form-icon');
+
+
+
+//When the user click on the icon to close the modal
+closeLoginFormIcon.addEventListener('click',function () {
+    closeLoginForm();
+});
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event){
+    if (event.target == modal) {
+        closeLoginForm();
+    }
+};
 
 function closeLoginForm() {
     modal.style.display = "none";
@@ -10,17 +24,6 @@ function closeLoginForm() {
         lastActive[0].classList.remove('nav-link-active')
     }
     linkHome.classList.add('nav-link-active')
-}
-//When the user click on the icon to close the modal
-closeLoginFormIcon.addEventListener('click',function () {
-    closeLoginForm();
-});
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeLoginForm();
-    }
 }
 
 

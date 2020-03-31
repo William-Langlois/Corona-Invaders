@@ -1,17 +1,14 @@
-const modal2 = document.getElementById('id02');
-const closeRegisterFormIcon = document.getElementById('close-register-form-icon');
+var modal2 = document.getElementById('id02');
+var linkHome = document.getElementById('nav-link-home');
+var closeRegisterFormIcon = document.getElementById('close-register-form-icon');
 
 closeRegisterFormIcon.addEventListener('click', function () {
-    modal2.style.display = "none";
-
     closeRegisterForm();
 });
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal2) {
-        modal2.style.display = "none";
-
         closeRegisterForm();
     }
 };
