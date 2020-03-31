@@ -1,21 +1,26 @@
+
+    //Get elements
+    const txtEmail = document.getElementById('txtEmail');
+    const txtPassword = document.getElementById('txtPassword');
+    const btnLogin = document.getElementById('btnLogin');
+    const btnLogout = document.getElementById('nav-link-logout');
+
+    // Add login event
+    btnLogin.addEventListener('click', e => {
+       // Get email and pass
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.signInWithEmailAndPassword(email,pass);
+        promise.catch(e => console.log(e.message));
+    });
+
+
 // Get the modal
-var modal = document.getElementById('id01');
-var linkHome = document.getElementById('nav-link-home');
-var closeLoginFormIcon = document.getElementById('close-login-form-icon');
-
-
-
-//When the user click on the icon to close the modal
-closeLoginFormIcon.addEventListener('click',function () {
-    closeLoginForm();
-});
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event){
-    if (event.target == modal) {
-        closeLoginForm();
-    }
-};
+const modal = document.getElementById('id01');
+const linkHome = document.getElementById('nav-link-home');
+const closeLoginFormIcon = document.getElementById('close-login-form-icon');
 
 function closeLoginForm() {
     modal.style.display = "none";
@@ -25,11 +30,16 @@ function closeLoginForm() {
     }
     linkHome.classList.add('nav-link-active')
 }
+//When the user click on the icon to close the modal
+closeLoginFormIcon.addEventListener('click',function () {
+    closeLoginForm();
+});
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeLoginForm();
+    }
+};
 
 
-
-function validation() {
-    var username = document.getElementById("uname").value;
-    var password = document.getElementById("psw").value;
-
-}
