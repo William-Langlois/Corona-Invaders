@@ -103,10 +103,10 @@ function InitGame() {
 
     function update() {
         planet.rotation+=0.0001;
-        planet.y = ScreenHeight+(ScreenHeight/2)-(player.y/75);
-        planet.x = ScreenWidth / 2-(player.x/75);
-        background.y = ScreenHeight/2-(player.y/75);
-        background.x = ScreenWidth / 2-(player.x/75);
+        planet.y = ScreenHeight+(ScreenHeight/2)-(player.y/70);
+        planet.x = ScreenWidth / 2-(player.x/70);
+        background.y = ScreenHeight/2-(player.y/70);
+        background.x = ScreenWidth / 2-(player.x/70);
         player.x = game.input.mousePointer.x;
         player.y = game.input.mousePointer.y;
 
