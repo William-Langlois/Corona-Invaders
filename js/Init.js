@@ -1,5 +1,7 @@
 function Init(){
     NavInit();
+    loginInit();
+
 
     const firebaseConfig = {
         apiKey: "AIzaSyBnBa-76xV5FN_pD6Rg-27Ad0bm3q3rYvQ",

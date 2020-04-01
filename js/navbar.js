@@ -3,7 +3,6 @@ function NavInit() {
 
     var linkHome = document.getElementById('nav-link-home');
     var linkLogin = document.getElementById('nav-link-login');
-    var linkRegister = document.getElementById('nav-link-register');
     var linkPlay = document.getElementById('nav-link-play');
     var linkScoreboard = document.getElementById('nav-link-scoreboard');
     var linkProfile = document.getElementById('nav-link-profile');
@@ -62,5 +61,7 @@ function NavInit() {
         linkScoreboard.classList.add('d-none');
         linkLogout.classList.add('d-none');
     });
+
+
 }
 
