@@ -4,6 +4,7 @@ function loginInit() {
     const txtPassword = document.getElementById('txtPassword');
     const btnLogin = document.getElementById('btnLogin');
     const btnRegister = document.getElementById('btnRegister');
+    const btnLogout = document.getElementById('nav-link-logout');
 
     // Add login event
     btnLogin.addEventListener('click', e => {
@@ -14,6 +15,11 @@ function loginInit() {
         // Sign in
         const promise = auth.signInWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
+    });
+
+    // Logout
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
     });
 
     // Add signup event
