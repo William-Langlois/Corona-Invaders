@@ -70,9 +70,8 @@ function InitGame() {
         virusGroup = this.physics.add.group();
         bulletGroup = this.physics.add.group();
         scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#fff'});
-        playerLifeText = this.add.text(16, ScreenHeight - 50, 'vies restantes: 3', {fontSize: '32px', fill: '#fff'});
-
-
+        timeToShot=0;
+        timeToSpawnVirus=0;
     }
 
     function getRandom(min, max) {
@@ -82,26 +81,44 @@ function InitGame() {
     }
 
     function update() {
+        console.log(timeToShot);
         player.x = game.input.mousePointer.x;
         player.y = game.input.mousePointer.y;
 
-        if (game.input.mousePointer.isDown) {
-            bullet = this.physics.add.image(player.x, player.y, 'bullet');
-            bullet.scale = 0.02;
-            bullet.angle = 270;
-            bulletGroup.add(bullet);
-            bullet.setGravityY(-20);
-            bullet.setVelocityY(-1000);
-
+        if (game.input.mousePointer.isDown && timeToShot == 20) {
+            shot(this);
         }
 
-        virus = this.physics.add.image(getRandom(50, ScreenWidth - 50), getRandom(-150, -1500), 'virus1');
+        if (game.input.mousePointer.isDown && timeToSpawnVirus == 25) {
+            createVirus(this);
+        }
+
+        timeToShot++;
+        timeToSpawnVirus++;
+        if(timeToShot == 21){
+            timeToShot = 0;
+        }
+        if(timeToSpawnVirus == 26){
+            timeToSpawnVirus = 0;
+        }
+    }
+
+    function createVirus(vir){
+        virus = vir.physics.add.image(getRandom(50, ScreenWidth - 50), getRandom(-150, -1500), 'virus1');
         virus.scale = 0.1;
         virusGroup.add(virus);
-        this.physics.add.overlap(virus, player, virusHitPlayer, null, virus);
-        this.physics.add.overlap(bulletGroup, virus, bulletHitVirus, null, virus);
+        vir.physics.add.overlap(virus, player, virusHitPlayer, null, virus);
+        vir.physics.add.overlap(bulletGroup, virus, bulletHitVirus, null, virus);
+    }
 
-
+    function shot(bul){
+        bullet = bul.physics.add.image(player.x, player.y, 'bullet');
+        bullet.scale = 0.02;
+        bullet.angle = 270;
+        bulletGroup.add(bullet);
+        bullet.setGravityY(-20);
+        bullet.setVelocityY(-1000);
+        bullet.setVelocityX(player.x - game.input.mousePointer.x)
     }
 
     function bulletHitVirus(Virus, Bullet) {
@@ -113,13 +130,5 @@ function InitGame() {
 
     function virusHitPlayer(Virus) {
         Virus.destroy();
-        playerLife -= 1;
-        if (playerLife <= 0) {
-            playerLifeText.setText('Vies restantes: aucunes');
-            game.destroy();
-        } else {
-            playerLifeText.setText('Vies restantes: ' + playerLife);
-        }
-
     }
 }

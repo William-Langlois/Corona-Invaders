@@ -36,16 +36,18 @@ function loginInit() {
         }
     });
 
+    window.onclick = function (event) {
+        if (event.target == document.getElementById('id01')) {
+            closeLoginForm();
+        }
+    };
+
 }
 
 function closeLoginForm() {
     let modal = document.getElementById('id01');
     let linkHome = document.getElementById('nav-link-home');
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            closeLoginForm();
-        }
-    };
+
 
     modal.style.display = "none";
     let lastActive = document.getElementsByClassName('nav-link-active');

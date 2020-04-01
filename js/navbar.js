@@ -56,10 +56,6 @@ function NavInit() {
             lastActive[0].classList.remove('nav-link-active')
         }
         linkHome.classList.add('nav-link-active');
-        linkPlay.classList.add('d-none');
-        linkProfile.classList.add('d-none');
-        linkScoreboard.classList.add('d-none');
-        linkLogout.classList.add('d-none');
     });
 
 
