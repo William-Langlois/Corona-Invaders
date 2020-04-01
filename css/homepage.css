@@ -37,7 +37,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: url('../resources/backgrounds/background1.jpg');
+    background-image: url('../resources/backgrounds/background2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
