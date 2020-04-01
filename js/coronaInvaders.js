@@ -6,10 +6,18 @@ function InitGame() {
         ScreenWidth = ClientScreenWidth;
         ScreenHeight = ClientScreenHeight;
     } else {
-        if (ClientScreenWidth > 1920) {
+        if (ClientScreenWidth > 1920 &&ClientScreenHeight > 1200){
             ScreenWidth = 1920;
             ScreenHeight = 1200;
         } else {
+            if(ClientScreenWidth > 1920){
+                ScreenWidth = 1920;
+                ScreenHeight = ClientScreenHeight;
+            }
+            if(ClientScreenHeight > 1200){
+                ScreenWidth = 1920;
+                ScreenHeight = 1200;
+            }
 
         }
 
@@ -42,6 +50,7 @@ function InitGame() {
         this.load.image('virus1', 'resources/virus/virus1.png');
         this.load.image('ship1', 'resources/ships/ship1.png');
         this.load.image('bullet', 'resources/bullets/bullet1.png');
+        this.load.image('planet', 'resources/planets/planet1.png')
     }
 
     var background;
@@ -71,6 +80,8 @@ function InitGame() {
 
     function create() {
         background = this.add.image(ScreenWidth / 2, ScreenHeight / 2, 'background');
+        planet = this.add.image(ScreenWidth / 2, ScreenHeight+(ScreenHeight/2), 'planet');
+        planet;
 
         player = this.physics.add.image(0, 0, 'ship1');
         player.setGravityY(-20);
@@ -78,7 +89,7 @@ function InitGame() {
 
         virusGroup = this.physics.add.group();
         bulletGroup = this.physics.add.group();
-        scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#fff'});
+        scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '40px', fill: '#fff'});
         cadence_tir = 10;
         spawn_virus_speed = 100;
 
@@ -91,6 +102,11 @@ function InitGame() {
     }
 
     function update() {
+        planet.rotation+=0.0001;
+        planet.y = ScreenHeight+(ScreenHeight/2)-(player.y/75);
+        planet.x = ScreenWidth / 2-(player.x/75);
+        background.y = ScreenHeight/2-(player.y/75);
+        background.x = ScreenWidth / 2-(player.x/75);
         player.x = game.input.mousePointer.x;
         player.y = game.input.mousePointer.y;
 
@@ -100,11 +116,13 @@ function InitGame() {
 
                 shotFired = 1;
                 nb_tir = 1;
+                nb_tir_tt++;
             } else {
                 if (firstShotTime / cadence_tir == nb_tir) {
                     shot(this);
                     nb_tir++;
                     let i = 0;
+                    nb_tir_tt++;
                 }
             }
             firstShotTime++;
@@ -114,7 +132,6 @@ function InitGame() {
                     shotFired = 0;
                     timer = 0;
                     firstShotTime = 0;
-                    nb_tir_tt = nb_tir_tt+nb_tir;
                 }
                 timer++
             } else {
@@ -220,7 +237,6 @@ function InitGame() {
     }
 
     function virusHitPlayer(Virus) {
-        Virus.destroy();
         endGame();
     }
 

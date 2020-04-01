@@ -55,7 +55,7 @@ body{
     border-radius: 100%;
     width: 100vw;
     height: 100vw;
-    background-image: url('../resources/homeplanets/planet_1.png');
+    background-image: url('../resources/planets/planet1.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
