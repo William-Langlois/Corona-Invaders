@@ -6,85 +6,76 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js"></script>
 
-    <script src="js/Init.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/coronaInvaders.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/githublogin.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
 
+    <script src="js/Init.js"></script>
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/homepage.css" type="text/css" media="screen"/>
-</head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/homepage.css" type="text/css" media="screen" />
+    </head>
 
-<body onload="Init()">
-<header>
+    <body onload="Init()">
+    <header>
 
-    <nav id="coroned-navbar">
-        <ul>
-            <li><a id="nav-link-home" class="nav-link-active" href="#">Home</a></li>
-            <li><a id="nav-link-login" href="#">Login/Register</a></li>
-            <li><a id="nav-link-play" href="#">Play</a></li>
-            <li><a id="nav-link-scoreboard" href="#">Scoreboard</a></li>
-            <li><a id="nav-link-profile" href="#">Profile</a></li>
-            <li><a id="nav-link-logout" href="#">Logout</a></li>
+        <nav id="coroned-navbar">
+            <ul>
+                <li><a id="nav-link-home" class="nav-link-active" href="#">Home</a></li>
+                <li><a id="nav-link-login" href="#">Login/Register</a></li>
+                <li><a id="nav-link-play" href="#">Play</a></li>
+                <li><a id="nav-link-scoreboard" href="#">Scoreboard</a></li>
+                <li><a id="nav-link-profile" href="#">Profile</a></li>
+                <li><a id="nav-link-logout" href="#">Logout</a></li>
 
-        </ul>
-    </nav>
-</header>
+            </ul>
+        </nav>
+    </header>
 
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span id="close-login-form-icon" onclick="closeLoginForm()"
+        <!-- The Modal -->
+        <div id="id01" class="modal">
+  <span id="close-login-form-icon"
         class="close" title="Close Modal">&times;</span>
 
-    <!-- Modal Content -->
-    <form class="loginform">
+            <!-- Modal Content -->
+            <form class="loginform" >
 
-        <div class="container">
+                <div class="container">
 
-            <input type="email" placeholder="Email" id="txtEmail" required>
+                    <input type="email" placeholder="Email" id="txtEmail" required>
 
-            <input type="password" placeholder="Enter Password" id="txtPassword" required>
+                    <input type="password" placeholder="Enter Password" id="txtPassword" required>
 
-            <button type="submit" id="btnLogin">Login</button>
-            <button type="button" id="btnRegister">Register</button>
-            <!--  <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-             </label> -->
-        </div>
+                    <button type="submit" id="btnLogin">Login</button>
+                    <button type="submit" id="btnRegister">Register</button>
+                 </div>
 
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="closeLoginForm()" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-    </form>
-</div>
+                 <div class="container" style="background-color:#f1f1f1">
+                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                     <span class="psw">Forgot <a href="#">password?</a></span>
+                 </div><br>
+                <a id="githublogin" class="btn btn-block btn-social btn-github">
+                    <span class="fa fa-github"></span> Login with GitHub
+                </a>
+
+            </form>
+         </div>
 
 
-<div id="Planet-Container" class="container-fluid">
-    <div id="Planet" class="rotating">
-    </div>
-</div>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.13.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.13.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+     <div id="Planet-Container" class="container-fluid">
+             <div id="Planet" class="rotating">
+             </div>
+         </div>
+    <script src="js/login.js"></script>
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+    </body>
 
-</body>
-
-<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
