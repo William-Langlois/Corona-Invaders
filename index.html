@@ -52,15 +52,15 @@
 
                     <input type="password" placeholder="Enter Password" id="txtPassword" required>
 
-                    <button type="submit" id="btnLogin">Login</button>
-                    <button type="submit" id="btnRegister">Register</button>
+                    <button type="button" id="btnLogin">Login</button>
+                    <button type="button" id="btnRegister">Register</button>
                  </div>
 
                  <div class="container" style="background-color:#f1f1f1">
                      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                      <span class="psw">Forgot <a href="#">password?</a></span>
                  </div><br>
-                <a id="githublogin" class="btn btn-block btn-social btn-github">
+                <a onclick="githublogin()" id="githublogin" class="btn btn-block btn-social btn-github">
                     <span class="fa fa-github"></span> Login with GitHub
                 </a>
 
