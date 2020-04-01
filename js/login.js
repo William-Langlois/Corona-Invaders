@@ -4,6 +4,7 @@
     const txtPassword = document.getElementById('txtPassword');
     const btnLogin = document.getElementById('btnLogin');
     const btnLogout = document.getElementById('nav-link-logout');
+    const btnRegister = document.getElementById('btnRegister');
 
     // Add login event
     btnLogin.addEventListener('click', e => {
@@ -15,6 +16,28 @@
         const promise = auth.signInWithEmailAndPassword(email,pass);
         promise.catch(e => console.log(e.message));
     });
+
+    // Add signup event
+    btnRegister.addEventListener('click', e => {
+        // Get email and pass
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.createUserWithEmailAndPassword(email,pass);
+        promise.catch(e => console.log(e.message));
+    });
+
+    // Add a realtime listener
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser) {
+            console.log(firebaseUser);
+        }else {
+            console.log('not logged in');
+        }
+    });
+
+
 
 
 // Get the modal

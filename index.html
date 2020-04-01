@@ -6,15 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js"></script>
 
+    <script src="js/Init.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/coronaInvaders.js"></script>
-    <script src="js/githublogin.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
-
-    <script src="js/Init.js"></script>
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -27,8 +22,7 @@
         <nav id="coroned-navbar">
             <ul>
                 <li><a id="nav-link-home" class="nav-link-active" href="#">Home</a></li>
-                <li><a id="nav-link-register" href="#">Register</a></li>
-                <li><a id="nav-link-login" href="#">Login</a></li>
+                <li><a id="nav-link-login" href="#">Login/Register</a></li>
                 <li><a id="nav-link-play" href="#">Play</a></li>
                 <li><a id="nav-link-scoreboard" href="#">Scoreboard</a></li>
                 <li><a id="nav-link-profile" href="#">Profile</a></li>
@@ -44,7 +38,7 @@
         class="close" title="Close Modal">&times;</span>
 
             <!-- Modal Content -->
-            <form class="loginform" action="js/login.js">
+            <form class="loginform" >
 
                 <div class="container">
 
@@ -53,55 +47,41 @@
                     <input type="password" placeholder="Enter Password" id="txtPassword" required>
 
                     <button type="submit" id="btnLogin">Login</button>
-                    <label>
+                    <button type="submit" id="btnRegister">Register</button>
+                    <!--  <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                </div>
+                     </label> -->
+                 </div>
 
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                </div><br>
-                <button type="button" onclick="initApp()" class="btn btn-secondary" id="githublogin">Login with GitHub</button>
-            </form>
-        </div>
+                 <div class="container" style="background-color:#f1f1f1">
+                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                     <span class="psw">Forgot <a href="#">password?</a></span>
+                 </div>
+             </form>
+         </div>
 
-    <div id="id02" class="modal">
-  <span id="close-register-form-icon"
-        class="close" title="Close Modal2">&times;</span>
 
-        <!-- Modal Content -->
-        <form class="registerForm" action="js/register.js">
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="rname" required>
+     <div id="Planet-Container" class="container-fluid">
+             <div id="Planet" class="rotating">
+             </div>
+         </div>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.13.1/firebase-app.js"></script>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="rpsw" required>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.13.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
 
-                <label for="psw2"><b>Confirm Password</b></label>
-                <input type="password" placeholder="Confirm your password" name="rpsw2" required>
-
-                <button type="submit">Register</button>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-            </div>
-        </form>
-    </div>
-
-    <div id="Planet-Container" class="container-fluid">
-            <div id="Planet" class="rotating">
-            </div>
-        </div>
-
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
     <script src="js/login.js"></script>
-    <script src="js/register.js"></script>
 
     </body>
 
-
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>

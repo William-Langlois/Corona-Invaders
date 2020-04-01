@@ -17,14 +17,6 @@ function NavInit() {
         linkHome.classList.add('nav-link-active')
 
     });
-    linkRegister.addEventListener('click',function () {
-        let lastActive = document.getElementsByClassName('nav-link-active');
-        if (lastActive[0] != ""){
-            lastActive[0].classList.remove('nav-link-active')
-        }
-        linkRegister.classList.add('nav-link-active');
-        document.getElementById('id02').style.display='block'
-    });
     linkLogin.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
