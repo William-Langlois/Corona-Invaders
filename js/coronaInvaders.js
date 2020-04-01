@@ -6,15 +6,15 @@ function InitGame() {
         ScreenWidth = ClientScreenWidth;
         ScreenHeight = ClientScreenHeight;
     } else {
-        if (ClientScreenWidth > 1920 &&ClientScreenHeight > 1200){
+        if (ClientScreenWidth > 1920 && ClientScreenHeight > 1200) {
             ScreenWidth = 1920;
             ScreenHeight = 1200;
         } else {
-            if(ClientScreenWidth > 1920){
+            if (ClientScreenWidth > 1920) {
                 ScreenWidth = 1920;
                 ScreenHeight = ClientScreenHeight;
             }
-            if(ClientScreenHeight > 1200){
+            if (ClientScreenHeight > 1200) {
                 ScreenWidth = 1920;
                 ScreenHeight = 1200;
             }
@@ -38,8 +38,8 @@ function InitGame() {
         scene: {
             preload: preload,
             create: create,
-            update: update
-        }
+            update: update,
+        },
     };
 
 
@@ -51,12 +51,12 @@ function InitGame() {
         this.load.image('ship1', 'resources/ships/ship1.png');
         this.load.image('bullet', 'resources/bullets/bullet1.png');
         this.load.image('planet', 'resources/planets/planet1.png');
-        this.load.image('bottomCollider','resources/others/bottomCollider.jpg');
+        this.load.image('bottomCollider', 'resources/others/bottomCollider.jpg');
 
-        this.load.audio('music','resources/musics/Deorro-Five_hours.mp3');
+        this.load.audio('music', 'resources/musics/Deorro-Five_hours.mp3');
 
-        this.load.audio('gunshot','resources/sounds/gunshot.mp3');
-        this.load.audio('splash','resources/sounds/splash.mp3');
+        this.load.audio('gunshot', 'resources/sounds/gunshot.mp3');
+        this.load.audio('splash', 'resources/sounds/splash.mp3');
 
 
     }
@@ -74,7 +74,7 @@ function InitGame() {
     var bullet;
     var cadence_tir;
     var nb_tir;
-    var nb_tir_tt=0;
+    var nb_tir_tt = 0;
     var shotFired = 0;
 
     var score = 0;
@@ -83,36 +83,44 @@ function InitGame() {
     var nb_kill = 0;
     var waveLvl = 1;
 
-    var multiplier=0;
+    var multiplier = 0;
 
-    var planet_contamination=0;
+    var planet_contamination = 0;
     var contamination_status_bar;
-    var contamination_icon='';
 
-
-    var intro_terminated =0;
+    var intro_terminated = 0;
 
 
     function create() {
         background = this.add.image(ScreenWidth / 2, ScreenHeight / 2, 'background');
-        planet = this.add.image(ScreenWidth / 2, ScreenHeight-ScreenHeight/2, 'planet');
-        planet.scale=10;
-        bottomCollider = this.physics.add.image(ScreenWidth/2,ScreenHeight+2510,'bottomCollider');
+        planet = this.add.image(ScreenWidth / 2, ScreenHeight - ScreenHeight / 2, 'planet');
+        planet.scale = 10;
+        bottomCollider = this.physics.add.image(ScreenWidth / 2, ScreenHeight + 2510, 'bottomCollider');
         bottomCollider.setGravityY(-20);
 
         player = this.physics.add.image(0, 0, 'ship1');
         player.setGravityY(-20);
-        player.scale = 0.1;
-        player.x= ScreenWidth/2;
-        player.y=ScreenHeight/2;
+        player.scale = 0.2;
+        player.x = ScreenWidth / 2;
+        player.y = ScreenHeight / 2;
 
         virusGroup = this.physics.add.group();
         bulletGroup = this.physics.add.group();
-        contamination_status_bar = this.add.text(16, 16, 'Contamination |----------|', {fontSize: '35px', fill: '#fff'});
-        scoreText = this.add.text(16, ScreenHeight-56, 'Éliminations: 0', {fontSize: '35px', fill: '#fff'});
+        contamination_status_bar = this.add.text(16, 16, 'Contamination |----------|', {
+            fontSize: '35px',
+            fill: '#fff'
+        });
+        scoreText = this.add.text(16, ScreenHeight - 56, 'Éliminations: 0', {fontSize: '35px', fill: '#fff'});
+
+        this.input.setDefaultCursor('none');
 
         cadence_tir = 10;
         spawn_virus_speed = 100;
+        game.sound.play('music');
+        game.input.mousePointer.x = ScreenWidth /2;
+        game.input.mousePointer.y = ScreenHeight - ScreenHeight/2;
+        j=0;
+
     }
 
     function getRandom(min, max) {
@@ -122,13 +130,13 @@ function InitGame() {
     }
 
     function update() {
-        if(intro_terminated==2){
-            planet.rotation+=0.0005;
-            planet.y = ScreenHeight+(ScreenHeight/2)-(player.y/60);
-            planet.x = ScreenWidth / 2-(player.x/60);
+        if (intro_terminated == 2) {
+            planet.rotation += 0.0005;
+            planet.y = ScreenHeight + (ScreenHeight / 2) - (player.y / 60);
+            planet.x = ScreenWidth / 2 - (player.x / 60);
 
-            background.y = ScreenHeight/2-(player.y/60);
-            background.x = ScreenWidth / 2-(player.x/60);
+            background.y = ScreenHeight / 2 - (player.y / 60);
+            background.x = ScreenWidth / 2 - (player.x / 60);
 
             player.x = game.input.mousePointer.x;
             player.y = game.input.mousePointer.y;
@@ -210,39 +218,54 @@ function InitGame() {
             if (nb_kill == 200 && waveLvl == 5) {
                 waveLvl++;
 
+                spawn_virus_speed = 40;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 300 && waveLvl == 6) {
+                waveLvl++;
+
                 spawn_virus_speed = 30;
                 nb_virus = 0;
                 timerVirus = 0;
-            }
-            if (nb_kill == 500 && waveLvl == 6) {
-                waveLvl++;
-
-                spawn_virus_speed = 20;
-                nb_virus = 0;
-                timerVirus = 0;
 
             }
-            if (nb_kill == 1000 && waveLvl == 7) {
+            if (nb_kill == 400 && waveLvl == 7) {
                 waveLvl++;
 
-                spawn_virus_speed = 10;
+                spawn_virus_speed = 25;
                 nb_virus = 0;
                 timerVirus = 0;
             }
-            if(nb_kill == 2000){
+            if (nb_kill == 500) {
                 endGame('win')
             }
-        }else{
-            if(intro_terminated == 1){
-                game.sound.play('music');
+        } else {
+            if (intro_terminated == 1) {
                 intro_terminated = 2;
-            }else{
-                    planet.y++;
-                    if(planet.scale >= 1){
-                        planet.scale-=0.013;
-                    }
-                if(planet.y == ScreenHeight+(ScreenHeight/2)){
-                    intro_terminated=1;
+            } else {
+                j++;
+
+                player.x = game.input.mousePointer.x;
+                player.y = game.input.mousePointer.y;
+                if(player.scale > 0.1){
+                    player.scale  -= 0.0001
+                }
+
+                background.y = ScreenHeight / 2 - (player.y / 60);
+                background.x = ScreenWidth / 2 - (player.x / 60);
+
+                planet.x = ScreenWidth / 2 - (player.x / 60);
+                planet.y = ScreenHeight - ScreenHeight / 2 - (player.y / 60) + j;
+
+                planet.rotation += 0.0005;
+
+
+                if (planet.scale >= 1) {
+                    planet.scale -= 0.013;
+                }
+                if (planet.y >= ScreenHeight + (ScreenHeight / 2)) {
+                    intro_terminated = 1;
                 }
             }
         }
@@ -251,7 +274,7 @@ function InitGame() {
     function createVirus(vir) {
         virus = vir.physics.add.image(getRandom(50, ScreenWidth - 50), getRandom(-150, -1500), 'virus1');
         virus.scale = 0.1;
-        virus.body.collideWorldBounds=true;
+        virus.body.collideWorldBounds = true;
         virus.checkWorldBounds = true;
         virusGroup.add(virus);
         vir.physics.add.overlap(virus, player, virusHitPlayer, null, virus);
@@ -280,22 +303,22 @@ function InitGame() {
         }
     }
 
-    function virusHitPlanet(Virus){
+    function virusHitPlanet(Virus) {
         Virus.destroy();
-        planet_contamination+=10;
-        nb_contamination = planet_contamination/10;
-        var space_missing = 10-nb_contamination;
+        planet_contamination += 10;
+        nb_contamination = planet_contamination / 10;
+        var space_missing = 10 - nb_contamination;
         console.log(space_missing);
-        var contamination_icon ='';
-        for(let i=0;i<nb_contamination;i++){
-            contamination_icon=contamination_icon+'X';
+        var contamination_icon = '';
+        for (let i = 0; i < nb_contamination; i++) {
+            contamination_icon = contamination_icon + 'X';
         }
-        for(let i=0;i<space_missing;i++){
-            contamination_icon=contamination_icon+'-';
+        for (let i = 0; i < space_missing; i++) {
+            contamination_icon = contamination_icon + '-';
         }
-        contamination_status_bar.setText('Contamination |'+contamination_icon+'|');
+        contamination_status_bar.setText('Contamination |' + contamination_icon + '|');
 
-        if (planet_contamination >=100){
+        if (planet_contamination >= 100) {
             endGame('defeat');
         }
     }
@@ -305,32 +328,31 @@ function InitGame() {
     }
 
 
-
-    function endGame(result){
+    function endGame(result) {
+        game.input.setDefaultCursor('auto');
         game.destroy();
         console.log(result);
-        console.log('Votre score : '+score);
-        console.log('kills : '+nb_kill);
-        console.log('nombre de coups de feu tirés : '+nb_tir_tt);
+        console.log('Votre score : ' + score);
+        console.log('kills : ' + nb_kill);
+        console.log('nombre de coups de feu tirés : ' + nb_tir_tt);
         var accuracy = 0;
-        if(nb_tir_tt > 0){
-            accuracy = Math.round((nb_kill/nb_tir_tt)*100);
+        if (nb_tir_tt > 0) {
+            accuracy = Math.round((nb_kill / nb_tir_tt) * 100);
         }
-        console.log('Précision : '+accuracy+'%');
-        console.log('Contamination de la planète : '+planet_contamination+'%');
+        console.log('Précision : ' + accuracy + '%');
+        console.log('Contamination de la planète : ' + planet_contamination + '%');
 
 
+        multiplier += (accuracy / 10);
 
-        multiplier+=(accuracy/10);
-
-        if(result=='win') {
+        if (result == 'win') {
             multiplier += (((100 - planet_contamination) / 10));
         }
 
-        console.log('score multiplier : '+multiplier+'x');
+        console.log('score multiplier : ' + multiplier + 'x');
 
-        var Final_Score = Math.round(score* multiplier);
-        console.log('\n \n Score Final : '+Final_Score+' !');
+        var Final_Score = Math.round(score * multiplier);
+        console.log('\n \n Score Final : ' + Final_Score + ' !');
 
     }
 }
