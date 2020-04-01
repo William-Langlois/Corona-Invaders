@@ -89,8 +89,8 @@ if(ClientScreenHeight<=ClientScreenWidth){
 
         }
 
-        virus = this.physics.add.image(getRandom(50,ScreenWidth-50),getRandom(-150,-1000),'virus1');
-        virus.scale=0.1;
+        virus = this.physics.add.image(getRandom(50,ScreenWidth-50),getRandom(-150,-1500),'virus1');
+        virus.scale=0.2;
         virusGroup.add(virus);
         this.physics.add.overlap(virus,player,virusHitPlayer,null,virus);
         this.physics.add.overlap(bulletGroup,virus,bulletHitVirus,null,virus);
@@ -112,13 +112,11 @@ if(ClientScreenHeight<=ClientScreenWidth){
         Virus.destroy();
         playerLife-=1;
         if(playerLife<=0){
-            playerLifeText.setText('Vies restantes: aucunes')
+            playerLifeText.setText('Vies restantes: aucunes');
             game.destroy();
-            scoreStorage = localStorage;
-            scoreStorage.setItem(Date.now(),score);
         }
         else{
-            playerLifeText.setText('Vies restantes: '+playerLife);
+            playerLifeText.setText('Vies restantes: ' + playerLife);
         }
 
     }
