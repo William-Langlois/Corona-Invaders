@@ -50,7 +50,15 @@ function InitGame() {
         this.load.image('virus1', 'resources/virus/virus1.png');
         this.load.image('ship1', 'resources/ships/ship1.png');
         this.load.image('bullet', 'resources/bullets/bullet1.png');
-        this.load.image('planet', 'resources/planets/planet1.png')
+        this.load.image('planet', 'resources/planets/planet1.png');
+        this.load.image('bottomCollider','resources/others/bottomCollider.jpg');
+
+        this.load.audio('music','resources/musics/Deorro-Five_hours.mp3');
+
+        this.load.audio('gunshot','resources/sounds/gunshot.mp3');
+        this.load.audio('splash','resources/sounds/splash.mp3');
+
+
     }
 
     var background;
@@ -77,22 +85,34 @@ function InitGame() {
 
     var multiplier=0;
 
+    var planet_contamination=0;
+    var contamination_status_bar;
+    var contamination_icon='';
+
+
+    var intro_terminated =0;
+
 
     function create() {
         background = this.add.image(ScreenWidth / 2, ScreenHeight / 2, 'background');
-        planet = this.add.image(ScreenWidth / 2, ScreenHeight+(ScreenHeight/2), 'planet');
-        planet;
+        planet = this.add.image(ScreenWidth / 2, ScreenHeight-ScreenHeight/2, 'planet');
+        planet.scale=10;
+        bottomCollider = this.physics.add.image(ScreenWidth/2,ScreenHeight+2510,'bottomCollider');
+        bottomCollider.setGravityY(-20);
 
         player = this.physics.add.image(0, 0, 'ship1');
         player.setGravityY(-20);
         player.scale = 0.1;
+        player.x= ScreenWidth/2;
+        player.y=ScreenHeight/2;
 
         virusGroup = this.physics.add.group();
         bulletGroup = this.physics.add.group();
-        scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '40px', fill: '#fff'});
+        contamination_status_bar = this.add.text(16, 16, 'Contamination |----------|', {fontSize: '35px', fill: '#fff'});
+        scoreText = this.add.text(16, ScreenHeight-56, 'Éliminations: 0', {fontSize: '35px', fill: '#fff'});
+
         cadence_tir = 10;
         spawn_virus_speed = 100;
-
     }
 
     function getRandom(min, max) {
@@ -102,119 +122,142 @@ function InitGame() {
     }
 
     function update() {
-        planet.rotation+=0.0001;
-        planet.y = ScreenHeight+(ScreenHeight/2)-(player.y/70);
-        planet.x = ScreenWidth / 2-(player.x/70);
-        background.y = ScreenHeight/2-(player.y/70);
-        background.x = ScreenWidth / 2-(player.x/70);
-        player.x = game.input.mousePointer.x;
-        player.y = game.input.mousePointer.y;
+        if(intro_terminated==2){
+            planet.rotation+=0.0005;
+            planet.y = ScreenHeight+(ScreenHeight/2)-(player.y/60);
+            planet.x = ScreenWidth / 2-(player.x/60);
 
-        if (game.input.mousePointer.isDown) {
-            if (firstShotTime == 0) {
-                shot(this);
+            background.y = ScreenHeight/2-(player.y/60);
+            background.x = ScreenWidth / 2-(player.x/60);
 
-                shotFired = 1;
-                nb_tir = 1;
-                nb_tir_tt++;
-            } else {
-                if (firstShotTime / cadence_tir == nb_tir) {
+            player.x = game.input.mousePointer.x;
+            player.y = game.input.mousePointer.y;
+
+            if (game.input.mousePointer.isDown) {
+                if (firstShotTime == 0) {
                     shot(this);
-                    nb_tir++;
-                    let i = 0;
+                    game.sound.play('gunshot');
+
+                    shotFired = 1;
+                    nb_tir = 1;
                     nb_tir_tt++;
+                } else {
+                    if (firstShotTime / cadence_tir == nb_tir) {
+                        shot(this);
+                        game.sound.play('gunshot');
+
+                        nb_tir++;
+                        let i = 0;
+                        nb_tir_tt++;
+                    }
                 }
-            }
-            firstShotTime++;
-        } else {
-            if (shotFired == 1) {
-                if (timer / cadence_tir == 1) {
-                    shotFired = 0;
-                    timer = 0;
-                    firstShotTime = 0;
-                }
-                timer++
+                firstShotTime++;
             } else {
-                firstShotTime = 0;
-                timer = 0;
+                if (shotFired == 1) {
+                    if (timer / cadence_tir == 1) {
+                        shotFired = 0;
+                        timer = 0;
+                        firstShotTime = 0;
+                    }
+                    timer++
+                } else {
+                    firstShotTime = 0;
+                    timer = 0;
+                }
             }
-        }
 
-        if (nb_virus == 0) {
-            createVirus(this);
-            nb_virus = 1;
-            console.log(nb_virus);
-            timerVirus = 0;
-        } else {
-            if (timerVirus / spawn_virus_speed == nb_virus) {
-                console.log(timerVirus + ' vir_speed ' + spawn_virus_speed);
-
+            if (nb_virus == 0) {
                 createVirus(this);
-                nb_virus++;
+                nb_virus = 1;
+                timerVirus = 0;
+            } else {
+                if (timerVirus / spawn_virus_speed == nb_virus) {
+
+                    createVirus(this);
+                    nb_virus++;
+                }
+                timerVirus++;
             }
-            timerVirus++;
+
+            if (nb_kill == 10 && waveLvl == 1) {
+                waveLvl++;
+
+                spawn_virus_speed = 80;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 35 && waveLvl == 2) {
+                waveLvl++;
+
+                spawn_virus_speed = 70;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 75 && waveLvl == 3) {
+                waveLvl++;
+
+                spawn_virus_speed = 60;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 100 && waveLvl == 4) {
+                waveLvl++;
+
+                spawn_virus_speed = 50;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 200 && waveLvl == 5) {
+                waveLvl++;
+
+                spawn_virus_speed = 30;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 500 && waveLvl == 6) {
+                waveLvl++;
+
+                spawn_virus_speed = 20;
+                nb_virus = 0;
+                timerVirus = 0;
+
+            }
+            if (nb_kill == 1000 && waveLvl == 7) {
+                waveLvl++;
+
+                spawn_virus_speed = 10;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if(nb_kill == 2000){
+                endGame('win')
+            }
+        }else{
+            if(intro_terminated == 1){
+                game.sound.play('music');
+                intro_terminated = 2;
+            }else{
+                    planet.y++;
+                    if(planet.scale >= 1){
+                        planet.scale-=0.013;
+                    }
+                if(planet.y == ScreenHeight+(ScreenHeight/2)){
+                    intro_terminated=1;
+                }
+            }
         }
-
-        if (nb_kill == 10 && waveLvl == 1) {
-            waveLvl++;
-
-            spawn_virus_speed = 80;
-            nb_virus = 0;
-            timerVirus = 0;
-        }
-        if (nb_kill == 35 && waveLvl == 2) {
-            waveLvl++;
-
-            spawn_virus_speed = 60;
-            nb_virus = 0;
-            timerVirus = 0;
-        }
-        if (nb_kill == 75 && waveLvl == 3) {
-            waveLvl++;
-
-            spawn_virus_speed = 50;
-            nb_virus = 0;
-            timerVirus = 0;
-        }
-        if (nb_kill == 100 && waveLvl == 4) {
-            waveLvl++;
-
-            spawn_virus_speed = 30;
-            nb_virus = 0;
-            timerVirus = 0;
-        }
-        if (nb_kill == 200 && waveLvl == 5) {
-            waveLvl++;
-
-            spawn_virus_speed = 10;
-            nb_virus = 0;
-            timerVirus = 0;
-        }
-        if (nb_kill == 500 && waveLvl == 6) {
-            waveLvl++;
-
-            spawn_virus_speed = 5;
-            nb_virus = 0;
-            timerVirus = 0;
-
-        }
-        if (nb_kill == 1000 && waveLvl == 7) {
-            waveLvl++;
-
-            spawn_virus_speed = 1;
-            nb_virus = 0;
-            timerVirus = 0;
-        }
-        console.log(nb_tir_tt);
-
     }
 
     function createVirus(vir) {
         virus = vir.physics.add.image(getRandom(50, ScreenWidth - 50), getRandom(-150, -1500), 'virus1');
         virus.scale = 0.1;
+        virus.body.collideWorldBounds=true;
+        virus.checkWorldBounds = true;
         virusGroup.add(virus);
         vir.physics.add.overlap(virus, player, virusHitPlayer, null, virus);
         vir.physics.add.overlap(bulletGroup, virus, bulletHitVirus, null, virus);
+        vir.physics.add.overlap(virus, bottomCollider, virusHitPlanet, null, virus);
+
     }
 
     function shot(bul) {
@@ -230,27 +273,63 @@ function InitGame() {
         Bullet.destroy();
         if (Virus.y >= 0) {
             Virus.destroy();
+            game.sound.play('splash');
             score += 10;
-            scoreText.setText('Score: ' + score)
             nb_kill++;
+            scoreText.setText('Éliminations : ' + nb_kill);
+        }
+    }
+
+    function virusHitPlanet(Virus){
+        Virus.destroy();
+        planet_contamination+=10;
+        nb_contamination = planet_contamination/10;
+        var space_missing = 10-nb_contamination;
+        console.log(space_missing);
+        var contamination_icon ='';
+        for(let i=0;i<nb_contamination;i++){
+            contamination_icon=contamination_icon+'X';
+        }
+        for(let i=0;i<space_missing;i++){
+            contamination_icon=contamination_icon+'-';
+        }
+        contamination_status_bar.setText('Contamination |'+contamination_icon+'|');
+
+        if (planet_contamination >=100){
+            endGame('defeat');
         }
     }
 
     function virusHitPlayer(Virus) {
-        endGame();
+        endGame('defeat');
     }
 
-    function endGame(){
+
+
+    function endGame(result){
         game.destroy();
+        console.log(result);
         console.log('Votre score : '+score);
         console.log('kills : '+nb_kill);
         console.log('nombre de coups de feu tirés : '+nb_tir_tt);
-        var accuracy = Math.round((nb_kill/nb_tir_tt)*100);
+        var accuracy = 0;
+        if(nb_tir_tt > 0){
+            accuracy = Math.round((nb_kill/nb_tir_tt)*100);
+        }
         console.log('Précision : '+accuracy+'%');
+        console.log('Contamination de la planète : '+planet_contamination+'%');
+
+
 
         multiplier+=(accuracy/10);
 
-        var Final_Score = score * multiplier;
+        if(result=='win') {
+            multiplier += (((100 - planet_contamination) / 10));
+        }
+
+        console.log('score multiplier : '+multiplier+'x');
+
+        var Final_Score = Math.round(score* multiplier);
         console.log('\n \n Score Final : '+Final_Score+' !');
 
     }
