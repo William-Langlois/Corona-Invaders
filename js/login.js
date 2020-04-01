@@ -35,8 +35,9 @@ function loginInit() {
             console.log('not logged in');
         }
     });
+
     window.onclick = function (event) {
-        if (event.target == modal) {
+        if (event.target == document.getElementById('id01')) {
             closeLoginForm();
         }
     };

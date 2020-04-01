@@ -17,7 +17,6 @@ function NavInit() {
 
     });
     linkLogin.addEventListener('click',function () {
-        console.log('nique je suis dans conditions sa mere');
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
@@ -57,10 +56,6 @@ function NavInit() {
             lastActive[0].classList.remove('nav-link-active')
         }
         linkHome.classList.add('nav-link-active');
-        linkPlay.classList.add('d-none');
-        linkProfile.classList.add('d-none');
-        linkScoreboard.classList.add('d-none');
-        linkLogout.classList.add('d-none');
     });
 
 
