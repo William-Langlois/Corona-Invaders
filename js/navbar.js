@@ -17,6 +17,7 @@ function NavInit() {
 
     });
     linkLogin.addEventListener('click',function () {
+        console.log('nique je suis dans conditions sa mere');
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
