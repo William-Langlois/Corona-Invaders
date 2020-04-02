@@ -58,6 +58,5 @@ function NavInit() {
         linkHome.classList.add('nav-link-active');
     });
 
-
 }
 
