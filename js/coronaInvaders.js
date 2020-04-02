@@ -378,6 +378,26 @@ function InitGame() {
         endgame_Score.classList.remove('d-none');
     }
 
+    const btnEndgame = document.getElementById('endgame-score-submit');
+
+    btnEndgame.addEventListener('click', addScore);
+
+    function addScore(name, accuracy, score) {
+        var input_name = document.getElementById('input_name');
+        var input_accuracy = document.getElementById('input_accuracy');
+        var input_score = document.getElementById('input_score');
+        var database = firebase.database();
+        var ref = database.ref('highscores');
+        var data = {
+            name: input_name.value,
+            accuracy: input_accuracy.value,
+            score: input_score.value,
+        }
+        ref.push(data);
+        console.log(data);
+    };
+
+
 
 
 
