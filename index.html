@@ -78,20 +78,21 @@
     <form class="loginform">
 
         <div class="container">
+            <h2 id="login-form-title">Login</h2>
 
-            <input type="email" placeholder="Email" id="txtEmail" required>
-
-            <input type="password" placeholder="Enter Password" id="txtPassword" required>
-
+            <br>
+            <br>
+            <input class="form-control" type="email" placeholder="Email" id="txtEmail" required>
+            <br>
+            <input class="form-control" type="password" placeholder="Enter Password" id="txtPassword" required>
+            <br>
             <button type="button" id="btnLogin">Login</button>
             <button type="button" id="btnRegister">Register</button>
         </div>
 
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
-                Cancel
-            </button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+        <div class="container">
+            <br>
+            <span class="forg-psw"><a href="#">Forgot password?</a></span>
         </div>
         <br>
         <a onclick="githublogin()" id="githublogin" class="btn btn-block btn-social btn-github">

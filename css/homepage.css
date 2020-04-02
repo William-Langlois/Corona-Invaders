@@ -105,18 +105,24 @@ body{
 }
 
 .loginform {
-    background-color: #fefefe;
-    margin: 5px auto;
-    border: 1px solid;
-    width: 30%;
-
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+    background-color: black;
+    width: 50vw;
+    height: 70vh;
+    border-radius: 10%;
+    border-style: solid;
+    border-color: white;
+    font-family: BarcadeBrawl;
+    color: #fefefe;
+    z-index: 1;
+    overflow-y: scroll;
 }
-
-.registerForm {
-    background-color: #fefefe;
-    margin: 5px auto;
-    border: 1px solid;
-    width: 30%;
+#login-form-title{
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 #endgame-score{
