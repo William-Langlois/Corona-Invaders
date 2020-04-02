@@ -41,6 +41,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 #Planet-Container{
     width: 100vw;
     height: 100vh;
@@ -118,3 +119,16 @@ body{
 
 }
 
+#scoreboard {
+    /*display: none;*/
+    background-color: black;
+    width: 65vh;
+    height: 75vh;
+    border-radius: 10%;
+    border-color: #fefefe;
+    color: #fefefe;
+}
+
+#sbtitle {
+    text-align: center;
+}
