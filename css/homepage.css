@@ -41,6 +41,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 #Planet-Container{
     width: 100vw;
     height: 100vh;
@@ -58,6 +59,7 @@ body{
     background-image: url('../resources/planets/planet1.png');
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 
@@ -125,3 +127,48 @@ body{
     background-color: rgba(10,10,10,0.99);
 }
 
+@font-face {
+    font-family: "BarcadeBrawl";
+    src: url("../resources/fonts/BarcadeBrawlRegular-plYD.ttf");
+}
+
+#scoreboard {
+    /*display: none;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    width: 65vh;
+    height: 75vh;
+    border-radius: 10%;
+    border-color: #fefefe;
+    mso-border-shadow: yes;
+    color: #fefefe;
+    font-family: BarcadeBrawl;
+    z-index: 1;
+}
+
+#sbtitle {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+#sb {
+    display: grid;
+    grid-template-columns: 20vh 26vh 1fr ;
+}
+
+#name {
+    grid-column: 1;
+    text-align: center;
+}
+
+#score {
+    grid-column: 2;
+    text-align: center;
+}
+
+#accuracy {
+    grid-column: 3;
+    text-align: center;
+}

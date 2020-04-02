@@ -1,27 +1,32 @@
- const  preObject = document.getElementById('object');
- const ulList = document.getElementById('list');
- // init firebase
- const db = firebase.database();
- // Create references
- const highscores = db.ref().child('highscores');
- const dbRefList = highscores.child('id1');
- //syn object changes
- highscores.on('value', snap => preObject.innerText = JSON.stringify(snap.val()), null, 5);
-
- dbRefList.on('child_added', snap => {
-     const li = document.createElement('li');
-     li.innerText = snap.val();
-     ulList.appendChild(li);
- });
 
 
- for (let i = 0; i <20; i++){
-     let tr = $("<tr></tr>").attr("id",i);
-     let name = $("<td></td>").text(database[i].name);
-     let précision = $("<td></td>").text(database[i].précision);
-     let score = $("<td></td>").text(database[i].score);
-     tr.append(name);
-     tr.append(précision);
-     tr.append(score);
- }
+    const ulList = document.getElementById('scoreslist');
+    // init firebase
+    const db = firebase.database();
+    // Create references
 
+    const ref = db.ref('highscores');
+    ref.on('value', gotData, errData);
+
+    function gotData(data) {
+        console.log(data.val());
+        const scores = data.val();
+        const keys = Object.keys(scores);
+        console.log(keys);
+        for (let i = 0; i < keys.length; i++) {
+            let k = keys[i];
+            let name = scores[k].name;
+            let accuracy = scores[k].accuracy;
+            let score = scores[k].score;
+            console.log(name, accuracy, score);
+            let li = document.createElement ('li');
+            li.innerHTML = (name + accuracy + score);
+            ulList.appendChild(li);
+            console.log(li)
+        }
+    }
+
+    function errData(err) {
+        console.log('Error!');
+        console.log(err);
+    }
