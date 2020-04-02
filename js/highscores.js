@@ -39,21 +39,27 @@
         console.log(err);
     }
 
-    window.onclick = function (event) {
-        if (event.target == document.getElementById('scoreboard')) {
-            closeScoreboard();
-        }
-    };
+        window.addEventListener('click', function event(event) {
+            console.log(event.target);
+            var body = document.getElementsByTagName('body')[0];
+            var planet = document.getElementById('Planet');
+            var planetContainer = document.getElementById('Planet-Container');
+
+            if (event.target == body || event.target == planet || event.target == planetContainer){
+                closeScoreboard();
+            }
+        });
 
     function closeScoreboard() {
-        let modal = document.getElementById('scoreboard');
-        let linkScoreboard = document.getElementById('nav-link-scoreboard');
+        console.log('fermer');
+
+        let scoreboard = document.getElementById('scoreboard');
+        scoreboard.style.display='none';
 
 
-        modal.style.display = "none";
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != "") {
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkScoreboard.classList.add('nav-link-active')
+        document.getElementById('nav-link-home').classList.add('nav-link-active')
     }

@@ -136,6 +136,26 @@ body{
     src: url("../resources/fonts/BarcadeBrawlRegular-plYD.ttf");
 }
 
+::-webkit-scrollbar {
+    width: 3px;
+    height: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+    width: 5px;
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 1em;
+
+background-color: grey;
+outline: 1px solid slategrey;
+border-radius: 1rem;
+}
+
+
 #scoreboard{
     /*display: none;*/
     position: absolute;
@@ -150,6 +170,25 @@ body{
     font-family: BarcadeBrawl;
     color: #fefefe;
     z-index: 1;
+    overflow-y: scroll;
+}
+@media (min-width: 750px) and (max-width: 1000px){
+    #scoreboard{
+        width: 70vw;
+        left: 20vw;
+    }
+}
+@media (min-width: 600px) and (max-width: 750px) {
+    #scoreboard{
+        width: 90vw;
+        left: 5vw;
+    }
+}
+@media (max-width: 600px) {
+    #scoreboard{
+        width: 100vw;
+        left: 0vw;
+    }
 }
 
 #sbtitle {

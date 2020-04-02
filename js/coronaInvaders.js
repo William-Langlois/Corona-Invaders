@@ -92,6 +92,8 @@ function InitGame() {
     var intro_terminated = 0;
     var gameOver = false;
 
+    var score_added = false;
+
 
     function create() {
         background = this.add.image(ScreenWidth / 2, ScreenHeight / 2, 'background');
@@ -396,7 +398,10 @@ function InitGame() {
             accuracy: input_accuracy.value,
             score: input_score.value,
         }
-        ref.push(data);
+        if(score_added == false){
+            ref.push(data);
+            score_added = true
+        }
         console.log(data);
     };
 

@@ -13,18 +13,21 @@ function NavInit() {
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkHome.classList.add('nav-link-active')
+        linkHome.classList.add('nav-link-active');
         document.location.reload(true);
-
+        document.getElementById('scoreboard').style.display='none';
     });
+
     linkLogin.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
         linkLogin.classList.add('nav-link-active');
-        document.getElementById('id01').style.display='block'
+        document.getElementById('id01').style.display='block';
+        document.getElementById('scoreboard').style.display='none';
     });
+
     linkPlay.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
@@ -35,32 +38,34 @@ function NavInit() {
         document.getElementById('coroned-navbar').classList.add('d-none');
         document.getElementById('scoreboard').style.display='none';
 
-
         InitGame();
-
     });
+
     linkScoreboard.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkScoreboard.classList.add('nav-link-active')
+        linkScoreboard.classList.add('nav-link-active');
         document.getElementById('scoreboard').style.display='block'
-
     });
+
     linkProfile.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
         linkProfile.classList.add('nav-link-active')
+        document.getElementById('scoreboard').style.display='none';
     });
+
     linkLogout.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
         linkHome.classList.add('nav-link-active');
+        document.getElementById('scoreboard').style.display='none';
     });
 
 }
