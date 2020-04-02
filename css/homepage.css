@@ -175,7 +175,7 @@ border-radius: 1rem;
     font-family: BarcadeBrawl;
     color: #fefefe;
     z-index: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 @media (min-width: 750px) and (max-width: 1000px){
     #scoreboard{
