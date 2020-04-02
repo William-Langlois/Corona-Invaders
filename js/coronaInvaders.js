@@ -15,7 +15,7 @@ function InitGame() {
                 ScreenHeight = ClientScreenHeight;
             }
             if (ClientScreenHeight > 1200) {
-                ScreenWidth = 1920;
+                ScreenWidth = ClientScreenWidth;
                 ScreenHeight = 1200;
             }
 
@@ -28,6 +28,7 @@ function InitGame() {
         type: Phaser.AUTO,
         width: ScreenWidth,
         height: ScreenHeight,
+        parent: 'game-div',
         physics: {
             default: 'arcade',
             arcade: {
@@ -89,6 +90,7 @@ function InitGame() {
     var contamination_status_bar;
 
     var intro_terminated = 0;
+    var gameOver = false;
 
 
     function create() {
@@ -117,10 +119,9 @@ function InitGame() {
         cadence_tir = 10;
         spawn_virus_speed = 100;
         game.sound.play('music');
-        game.input.mousePointer.x = ScreenWidth /2;
-        game.input.mousePointer.y = ScreenHeight - ScreenHeight/2;
-        j=0;
-
+        game.input.mousePointer.x = ScreenWidth / 2;
+        game.input.mousePointer.y = ScreenHeight - ScreenHeight / 2;
+        j = 0;
     }
 
     function getRandom(min, max) {
@@ -141,36 +142,38 @@ function InitGame() {
             player.x = game.input.mousePointer.x;
             player.y = game.input.mousePointer.y;
 
-            if (game.input.mousePointer.isDown) {
-                if (firstShotTime == 0) {
-                    shot(this);
-                    game.sound.play('gunshot');
-
-                    shotFired = 1;
-                    nb_tir = 1;
-                    nb_tir_tt++;
-                } else {
-                    if (firstShotTime / cadence_tir == nb_tir) {
+            if(gameOver == false) {
+                if (game.input.mousePointer.isDown) {
+                    if (firstShotTime == 0) {
                         shot(this);
                         game.sound.play('gunshot');
 
-                        nb_tir++;
-                        let i = 0;
+                        shotFired = 1;
+                        nb_tir = 1;
                         nb_tir_tt++;
+                    } else {
+                        if (firstShotTime / cadence_tir == nb_tir) {
+                            shot(this);
+                            game.sound.play('gunshot');
+
+                            nb_tir++;
+                            let i = 0;
+                            nb_tir_tt++;
+                        }
                     }
-                }
-                firstShotTime++;
-            } else {
-                if (shotFired == 1) {
-                    if (timer / cadence_tir == 1) {
-                        shotFired = 0;
-                        timer = 0;
-                        firstShotTime = 0;
-                    }
-                    timer++
+                    firstShotTime++;
                 } else {
-                    firstShotTime = 0;
-                    timer = 0;
+                    if (shotFired == 1) {
+                        if (timer / cadence_tir == 1) {
+                            shotFired = 0;
+                            timer = 0;
+                            firstShotTime = 0;
+                        }
+                        timer++
+                    } else {
+                        firstShotTime = 0;
+                        timer = 0;
+                    }
                 }
             }
 
@@ -248,8 +251,8 @@ function InitGame() {
 
                 player.x = game.input.mousePointer.x;
                 player.y = game.input.mousePointer.y;
-                if(player.scale > 0.1){
-                    player.scale  -= 0.0001
+                if (player.scale > 0.1) {
+                    player.scale -= 0.0001
                 }
 
                 background.y = ScreenHeight / 2 - (player.y / 60);
@@ -262,7 +265,7 @@ function InitGame() {
 
 
                 if (planet.scale >= 1) {
-                    planet.scale -= 0.013;
+                    planet.scale -= 0.015;
                 }
                 if (planet.y >= ScreenHeight + (ScreenHeight / 2)) {
                     intro_terminated = 1;
@@ -305,10 +308,11 @@ function InitGame() {
 
     function virusHitPlanet(Virus) {
         Virus.destroy();
-        planet_contamination += 10;
+        if (planet_contamination < 100) {
+            planet_contamination += 10;
+        }
         nb_contamination = planet_contamination / 10;
         var space_missing = 10 - nb_contamination;
-        console.log(space_missing);
         var contamination_icon = '';
         for (let i = 0; i < nb_contamination; i++) {
             contamination_icon = contamination_icon + 'X';
@@ -319,7 +323,10 @@ function InitGame() {
         contamination_status_bar.setText('Contamination |' + contamination_icon + '|');
 
         if (planet_contamination >= 100) {
-            endGame('defeat');
+            if (gameOver == false) {
+                endGame('defeat');
+            }
+
         }
     }
 
@@ -330,7 +337,6 @@ function InitGame() {
 
     function endGame(result) {
         game.input.setDefaultCursor('auto');
-        game.destroy();
         console.log(result);
         console.log('Votre score : ' + score);
         console.log('kills : ' + nb_kill);
@@ -354,5 +360,27 @@ function InitGame() {
         var Final_Score = Math.round(score * multiplier);
         console.log('\n \n Score Final : ' + Final_Score + ' !');
 
+        player.destroy();
+        gameOver = true;
+
+        var endgame_Score = document.getElementById('endgame-score');
+
+        var input_score = document.getElementById('input_score');
+        var input_kill = document.getElementById('input_kill');
+        var input_accuracy = document.getElementById('input_accuracy');
+        var input_contamination = document.getElementById('input_contamination');
+
+        input_score.value = Final_Score;
+        input_kill.value=nb_kill;
+        input_accuracy.value=accuracy;
+        input_contamination.value=planet_contamination;
+
+        endgame_Score.classList.remove('d-none');
     }
+
+
+
+
+
+
 }
