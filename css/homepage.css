@@ -117,7 +117,6 @@ body{
     font-family: BarcadeBrawl;
     color: #fefefe;
     z-index: 1;
-    overflow-y: scroll;
 }
 #login-form-title{
     text-align: center;
