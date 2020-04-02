@@ -120,6 +120,10 @@ body{
 
 }
 
+.sbmodal {
+    display: none;
+}
+
 @font-face {
     font-family: "BarcadeBrawl";
     src: url("../resources/fonts/BarcadeBrawlRegular-plYD.ttf");
@@ -128,16 +132,16 @@ body{
 #scoreboard {
     /*display: none;*/
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 15vh;
+    left: 30vw;
     background-color: black;
-    width: 65vh;
-    height: 75vh;
+    width: 35vw;
+    height: 70vh;
     border-radius: 10%;
-    border-color: #fefefe;
-    mso-border-shadow: yes;
-    color: #fefefe;
+    border-style: solid;
+    border-color: white;
     font-family: BarcadeBrawl;
+    color: #fefefe;
     z-index: 1;
 }
 
@@ -154,14 +158,22 @@ body{
 #name {
     grid-column: 1;
     text-align: center;
+    overflow: inherit;
 }
 
 #score {
     grid-column: 2;
     text-align: center;
+    overflow: inherit;
 }
 
 #accuracy {
     grid-column: 3;
     text-align: center;
+    overflow: inherit;
+}
+
+#pname, #pscore, #paccuracy {
+    list-style: none;
+    text-align: left;
 }
