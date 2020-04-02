@@ -117,6 +117,7 @@ body{
     margin: 5px auto;
     border: 1px solid;
     width: 30%;
+}
 
 #endgame-score{
     justify-content: center;
@@ -158,25 +159,25 @@ body{
 
 #sb {
     display: grid;
-    grid-template-columns: 20vh 26vh 1fr ;
+    grid-template-columns: 11vw 13vw 1fr ;
 }
 
 #name {
     grid-column: 1;
     text-align: center;
-    overflow: inherit;
+    overflow: auto;
 }
 
 #score {
     grid-column: 2;
     text-align: center;
-    overflow: inherit;
+    overflow: auto;
 }
 
 #accuracy {
     grid-column: 3;
     text-align: center;
-    overflow: inherit;
+    overflow: auto;
 }
 
 #pname, #pscore, #paccuracy {
