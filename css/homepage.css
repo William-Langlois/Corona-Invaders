@@ -118,6 +118,12 @@ body{
     border: 1px solid;
     width: 30%;
 
+#endgame-score{
+    justify-content: center;
+    position: absolute;
+    height: 60vh;
+    width: 40vw;
+    background-color: rgba(10,10,10,0.99);
 }
 
 .sbmodal {
