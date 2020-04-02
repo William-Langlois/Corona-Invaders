@@ -16,11 +16,11 @@
         for (let i = 0; i < keys.length; i++) {
             let k = keys[i];
             let name = scores[k].name;
-            let precision = scores[k].precision;
+            let accuracy = scores[k].accuracy;
             let score = scores[k].score;
-            console.log(name, precision, score);
+            console.log(name, accuracy, score);
             let li = document.createElement ('li');
-            li.innerHTML = (name + precision + score);
+            li.innerHTML = (name + accuracy + score);
             ulList.appendChild(li);
             console.log(li)
         }
