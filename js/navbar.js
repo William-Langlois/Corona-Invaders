@@ -33,6 +33,8 @@ function NavInit() {
         linkPlay.classList.add('nav-link-active');
         document.getElementById('Planet-Container').classList.add('d-none');
         document.getElementById('coroned-navbar').classList.add('d-none');
+        document.getElementById('scoreboard').style.display='none';
+
 
         InitGame();
 
