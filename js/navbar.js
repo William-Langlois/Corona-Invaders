@@ -14,6 +14,7 @@ function NavInit() {
             lastActive[0].classList.remove('nav-link-active')
         }
         linkHome.classList.add('nav-link-active')
+        document.location.reload(true);
 
     });
     linkLogin.addEventListener('click',function () {
@@ -42,6 +43,8 @@ function NavInit() {
             lastActive[0].classList.remove('nav-link-active')
         }
         linkScoreboard.classList.add('nav-link-active')
+        document.getElementById('scoreboard').style.display='block'
+
     });
     linkProfile.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
