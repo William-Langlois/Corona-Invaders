@@ -193,42 +193,42 @@ function InitGame() {
             if (nb_kill == 10 && waveLvl == 1) {
                 waveLvl++;
 
+                spawn_virus_speed = 90;
+                nb_virus = 0;
+                timerVirus = 0;
+            }
+            if (nb_kill == 30 && waveLvl == 2) {
+                waveLvl++;
+
                 spawn_virus_speed = 80;
                 nb_virus = 0;
                 timerVirus = 0;
             }
-            if (nb_kill == 35 && waveLvl == 2) {
+            if (nb_kill == 50 && waveLvl == 3) {
                 waveLvl++;
 
                 spawn_virus_speed = 70;
                 nb_virus = 0;
                 timerVirus = 0;
             }
-            if (nb_kill == 75 && waveLvl == 3) {
+            if (nb_kill == 100 && waveLvl == 4) {
                 waveLvl++;
 
                 spawn_virus_speed = 60;
                 nb_virus = 0;
                 timerVirus = 0;
             }
-            if (nb_kill == 100 && waveLvl == 4) {
+            if (nb_kill == 200 && waveLvl == 5) {
                 waveLvl++;
 
                 spawn_virus_speed = 50;
                 nb_virus = 0;
                 timerVirus = 0;
             }
-            if (nb_kill == 200 && waveLvl == 5) {
-                waveLvl++;
-
-                spawn_virus_speed = 40;
-                nb_virus = 0;
-                timerVirus = 0;
-            }
             if (nb_kill == 300 && waveLvl == 6) {
                 waveLvl++;
 
-                spawn_virus_speed = 30;
+                spawn_virus_speed = 40;
                 nb_virus = 0;
                 timerVirus = 0;
 
@@ -236,7 +236,7 @@ function InitGame() {
             if (nb_kill == 400 && waveLvl == 7) {
                 waveLvl++;
 
-                spawn_virus_speed = 25;
+                spawn_virus_speed = 30;
                 nb_virus = 0;
                 timerVirus = 0;
             }
@@ -352,7 +352,7 @@ function InitGame() {
         multiplier += (accuracy / 10);
 
         if (result == 'win') {
-            multiplier += (((100 - planet_contamination) / 10));
+            multiplier += ((100 - planet_contamination) / 10);
         }
 
         console.log('score multiplier : ' + multiplier + 'x');
@@ -364,11 +364,14 @@ function InitGame() {
         gameOver = true;
 
         var endgame_Score = document.getElementById('endgame-score');
+        var endgame_title = document.getElementById('endgame-title');
 
         var input_score = document.getElementById('input_score');
         var input_kill = document.getElementById('input_kill');
         var input_accuracy = document.getElementById('input_accuracy');
         var input_contamination = document.getElementById('input_contamination');
+
+        endgame_title.innerHTML = result;
 
         input_score.value = Final_Score;
         input_kill.value=nb_kill;
@@ -377,10 +380,4 @@ function InitGame() {
 
         endgame_Score.classList.remove('d-none');
     }
-
-
-
-
-
-
 }

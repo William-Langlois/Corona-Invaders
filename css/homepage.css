@@ -136,13 +136,13 @@ body{
     src: url("../resources/fonts/BarcadeBrawlRegular-plYD.ttf");
 }
 
-#scoreboard {
+#scoreboard{
     /*display: none;*/
     position: absolute;
     top: 15vh;
-    left: 30vw;
+    left: 25vw;
     background-color: black;
-    width: 35vw;
+    width: 50vw;
     height: 70vh;
     border-radius: 10%;
     border-style: solid;
@@ -154,12 +154,13 @@ body{
 
 #sbtitle {
     text-align: center;
-    margin-top: 1vh;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 #sb {
     display: grid;
-    grid-template-columns: 11vw 13vw 1fr ;
+    grid-template-columns: auto ;
 }
 
 #name {
@@ -181,6 +182,29 @@ body{
 }
 
 #pname, #pscore, #paccuracy {
+    margin-top: 2vh;
     list-style: none;
     text-align: left;
 }
+
+#endgame-title {
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#endgame-score{
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+    background-color: black;
+    width: 50vw;
+    height: 75vh;
+    border-radius: 10%;
+    border-style: solid;
+    border-color: white;
+    font-family: BarcadeBrawl;
+    color: #fefefe;
+    z-index: 1;
+}
+
