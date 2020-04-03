@@ -195,42 +195,42 @@ function InitGame() {
             if (nb_kill == 10 && waveLvl == 1) {
                 waveLvl++;
 
-                spawn_virus_speed = 90;
+                spawn_virus_speed = 100;
                 nb_virus = 0;
                 timerVirus = 0;
             }
             if (nb_kill == 30 && waveLvl == 2) {
                 waveLvl++;
 
-                spawn_virus_speed = 80;
+                spawn_virus_speed = 90;
                 nb_virus = 0;
                 timerVirus = 0;
             }
             if (nb_kill == 50 && waveLvl == 3) {
                 waveLvl++;
 
-                spawn_virus_speed = 70;
+                spawn_virus_speed = 80;
                 nb_virus = 0;
                 timerVirus = 0;
             }
             if (nb_kill == 100 && waveLvl == 4) {
                 waveLvl++;
 
-                spawn_virus_speed = 60;
+                spawn_virus_speed = 70;
                 nb_virus = 0;
                 timerVirus = 0;
             }
             if (nb_kill == 200 && waveLvl == 5) {
                 waveLvl++;
 
-                spawn_virus_speed = 50;
+                spawn_virus_speed = 60;
                 nb_virus = 0;
                 timerVirus = 0;
             }
             if (nb_kill == 300 && waveLvl == 6) {
                 waveLvl++;
 
-                spawn_virus_speed = 40;
+                spawn_virus_speed = 50;
                 nb_virus = 0;
                 timerVirus = 0;
 
@@ -238,7 +238,7 @@ function InitGame() {
             if (nb_kill == 400 && waveLvl == 7) {
                 waveLvl++;
 
-                spawn_virus_speed = 30;
+                spawn_virus_speed = 40;
                 nb_virus = 0;
                 timerVirus = 0;
             }
