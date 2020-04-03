@@ -91,8 +91,10 @@ function InitGame() {
 
     var intro_terminated = 0;
     var gameOver = false;
+    var gameWin = false;
 
     var score_added = false;
+
 
 
     function create() {
@@ -243,7 +245,10 @@ function InitGame() {
                 timerVirus = 0;
             }
             if (nb_kill == 500) {
-                endGame('win')
+                if(gameWin ==false){
+                    endGame('win');
+                    gameWin =true;
+                }
             }
         } else {
             if (intro_terminated == 1) {
@@ -353,17 +358,21 @@ function InitGame() {
 
         multiplier += (accuracy / 10);
 
-        if (result == 'win') {
-            multiplier += ((100 - planet_contamination) / 10);
-        }
+            if (result == 'win') {
+                multiplier += ((100 - planet_contamination) / 10);
+            }
+
 
         console.log('score multiplier : ' + multiplier + 'x');
 
         var Final_Score = Math.round(score * multiplier);
         console.log('\n \n Score Final : ' + Final_Score + ' !');
 
-        player.destroy();
-        gameOver = true;
+        if(result == 'defeat'){
+            player.destroy();
+            gameOver = true;
+        }
+
 
         var endgame_Score = document.getElementById('endgame-score');
         var endgame_title = document.getElementById('endgame-title');
@@ -404,6 +413,19 @@ function InitGame() {
             ref.push(data);
             score_added = true;
             btnEndgame.setAttribute('disabled','true');
+        }
+        else{
+            if(input_name.value == ""){
+                if(input_name.placeholder == ' Entrez votre pseudo')
+                {
+                    input_name.placeholder = '-Entrez votre pseudo-';
+                }
+                else{
+                    if(input_name.placeholder == '-Entrez votre pseudo-'){
+                        input_name.placeholder = ' Entrez votre pseudo';
+                    }
+                }
+            }
         }
         console.log(data);
     };
