@@ -18,6 +18,8 @@ function Init(){
     if(actualShip == null){
         localStorage.setItem('shipUrl','resources/ships/ship1.png')
     }
+
+
     console.log(actualShip);
     NavInit();
     loginInit();

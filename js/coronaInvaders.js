@@ -382,6 +382,7 @@ function InitGame() {
         var input_accuracy = document.getElementById('input_accuracy');
         var input_contamination = document.getElementById('input_contamination');
 
+
         endgame_title.innerHTML = result;
 
         input_score.value = Final_Score;
@@ -416,8 +417,7 @@ function InitGame() {
         }
         else{
             if(input_name.value == ""){
-                if(input_name.placeholder == ' Entrez votre pseudo')
-                {
+                if(input_name.placeholder == ' Entrez votre pseudo'){
                     input_name.placeholder = '-Entrez votre pseudo-';
                 }
                 else{
