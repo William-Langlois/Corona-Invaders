@@ -49,7 +49,7 @@ function InitGame() {
     function preload() {
         this.load.image('background', 'resources/backgrounds/background2.jpg');
         this.load.image('virus1', 'resources/virus/virus1.png');
-        this.load.image('ship1', 'resources/ships/ship2.png');
+        this.load.image('ship1', localStorage.getItem('shipUrl'));
         this.load.image('bullet', 'resources/bullets/bullet1.png');
         this.load.image('planet', 'resources/planets/planet1.png');
         this.load.image('bottomCollider', 'resources/others/bottomCollider.jpg');

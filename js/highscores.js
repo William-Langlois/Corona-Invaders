@@ -60,8 +60,10 @@
             var body = document.getElementsByTagName('body')[0];
             var planet = document.getElementById('Planet');
             var planetContainer = document.getElementById('Planet-Container');
+            var navbar = document.getElementById('coroned-navbar-ul');
 
-            if (event.target == body || event.target == planet || event.target == planetContainer){
+
+            if (event.target == body || event.target == planet || event.target == planetContainer || event.target == navbar){
                 closeScoreboard();
             }
         });

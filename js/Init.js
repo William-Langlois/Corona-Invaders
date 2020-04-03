@@ -13,9 +13,19 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 function Init(){
+    var actualShip = localStorage.getItem('shipUrl');
+    if(actualShip == null){
+        localStorage.setItem('shipUrl','resources/ships/ship1.png')
+    }
+    console.log(actualShip);
     NavInit();
     loginInit();
+
 }
 function githublogin() {
     toggleSignIn()
+}
+function changeShipImage(url) {
+    localStorage.clear();
+    localStorage.setItem('shipUrl',url)
 }

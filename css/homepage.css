@@ -118,6 +118,21 @@ body{
     color: #fefefe;
     z-index: 1;
 }
+#profile-panel{
+    position: absolute;
+    top: 15vh;
+    left: 5vw;
+    background-color: black;
+    width: 90vw;
+    height: 70vh;
+    border-radius: 10%;
+    border-style: solid;
+    border-color: white;
+    font-family: BarcadeBrawl;
+    color: #fefefe;
+    z-index: 1;
+    padding-left: 0.5vw;
+}
 #login-form-title{
     text-align: center;
     margin-top: 3px;
@@ -196,7 +211,7 @@ border-radius: 1rem;
     }
 }
 
-#sbtitle {
+#sbtitle , #profile-title {
     text-align: center;
     margin-top: 3px;
     margin-bottom: 3px;

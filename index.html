@@ -27,17 +27,31 @@
 <header>
 
     <nav id="coroned-navbar">
-        <ul>
+        <ul id="coroned-navbar-ul">
             <li><a id="nav-link-home" class="nav-link-active" href="#">Home</a></li>
             <li><a id="nav-link-login" href="#">Login/Register</a></li>
             <li><a id="nav-link-play" href="#">Play</a></li>
             <li><a id="nav-link-scoreboard" href="#">Scoreboard</a></li>
             <li><a id="nav-link-profile" href="#">Profile</a></li>
             <li><a id="nav-link-logout" href="#">Logout</a></li>
-
         </ul>
     </nav>
 </header>
+
+
+
+<div id="profile-panel" class="d-none">
+    <h1 id="profile-title">Profile</h1>
+    <form method="post" action="#">
+        <label for="input_choose_ship">
+            Choose ship :
+        </label>
+        <img onclick="changeShipImage('resources/ships/ship1.png')" src='./resources/ships/ship1.png' style="width: 100px;height: 100px;">
+        <img onclick="changeShipImage('resources/ships/ship2.png')" src='./resources/ships/ship2.png' style="width: 100px;height: 100px;">
+
+    </form>
+</div>
+
 <div id="endgame-score" class="d-none">
     <h1 id="endgame-title"></h1>
     <form method="post" action="#">

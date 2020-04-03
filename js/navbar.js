@@ -37,7 +37,7 @@ function NavInit() {
         document.getElementById('Planet-Container').classList.add('d-none');
         document.getElementById('coroned-navbar').classList.add('d-none');
         document.getElementById('scoreboard').style.display='none';
-
+        closeProfile();
         InitGame();
     });
 
@@ -56,6 +56,7 @@ function NavInit() {
             lastActive[0].classList.remove('nav-link-active')
         }
         linkProfile.classList.add('nav-link-active');
+        document.getElementById('profile-panel').classList.remove('d-none');
         document.getElementById('scoreboard').style.display='none';
     });
 
@@ -68,6 +69,31 @@ function NavInit() {
         document.getElementById('scoreboard').style.display='none';
     });
 
+    window.addEventListener('click', function event(event) {
+        console.log(event.target);
+        var body = document.getElementsByTagName('body')[0];
+        var planet = document.getElementById('Planet');
+        var planetContainer = document.getElementById('Planet-Container');
+        var navbar = document.getElementById('coroned-navbar-ul');
+
+        if (event.target == body || event.target == planet || event.target == planetContainer || event.target == navbar){
+            closeProfile();
+        }
+    });
+
 }
 
+
+function closeProfile() {
+    console.log('fermer');
+
+    let profile= document.getElementById('profile-panel');
+    profile.classList.add('d-none');
+
+    let lastActive = document.getElementsByClassName('nav-link-active');
+    if (lastActive[0] != "") {
+        lastActive[0].classList.remove('nav-link-active')
+    }
+    document.getElementById('nav-link-home').classList.add('nav-link-active')
+}
 
