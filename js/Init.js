@@ -12,6 +12,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+//Initialize mulitple website functions
 function Init(){
     var actualShip = localStorage.getItem('shipUrl');
     if(actualShip == null){
@@ -20,10 +21,14 @@ function Init(){
     console.log(actualShip);
     NavInit();
     loginInit();
-
 }
+//Login with GitHub
 function githublogin() {
-    toggleSignIn()
+    toggleSignIn();
+}
+//Logout with GitHub
+function githublogout() {
+    toggleSignOut();
 }
 function changeShipImage(url) {
     localStorage.clear();
