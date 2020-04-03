@@ -9,10 +9,26 @@
     ref.on('value', gotData, errData);
 
     function gotData(data) {
-        console.log(data.val());
-        const scores = data.val();
-        const keys = Object.keys(scores);
+        const scores= data.val();
+        var scoresArray = Object.keys(scores).map(function(key) {
+            return {'key':String(key),'name':scores[key].name,'score':scores[key].score,'accuracy':scores[key].accuracy};
+        });
+        console.log(scoresArray);
+        scoresArray.sort(function (scoreA,scoreB) {
+            return(scoreB.score - scoreA.score);
+        });
+        scoresArray.sort(function (scoreA,scoreB) {
+            if(scoreA.score ==scoreB.score){
+                return (scoreB.accuracy - scoreA.accuracy)
+            }
+        });
+        console.log(scoresArray);
+        var keys = [];
+        for(let i=0;i<scoresArray.length;i++){
+            keys.push(scoresArray[i]['key']);
+        }
         console.log(keys);
+
         for (let i = 0; i < keys.length; i++) {
             let k = keys[i];
             let name = scores[k].name;

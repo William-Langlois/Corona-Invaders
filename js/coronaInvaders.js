@@ -51,7 +51,7 @@ function InitGame() {
         this.load.image('virus1', 'resources/virus/virus1.png');
         this.load.image('ship1', 'resources/ships/ship1.png');
         this.load.image('bullet', 'resources/bullets/bullet1.png');
-        this.load.image('planet', 'resources/planets/planet2.png');
+        this.load.image('planet', 'resources/planets/planet1.png');
         this.load.image('bottomCollider', 'resources/others/bottomCollider.jpg');
 
         this.load.audio('music', 'resources/musics/Deorro-Five_hours.mp3');
