@@ -49,7 +49,7 @@ function InitGame() {
     function preload() {
         this.load.image('background', 'resources/backgrounds/background2.jpg');
         this.load.image('virus1', 'resources/virus/virus1.png');
-        this.load.image('ship1', 'resources/ships/ship1.png');
+        this.load.image('ship1', 'resources/ships/ship2.png');
         this.load.image('bullet', 'resources/bullets/bullet1.png');
         this.load.image('planet', 'resources/planets/planet1.png');
         this.load.image('bottomCollider', 'resources/others/bottomCollider.jpg');
@@ -135,11 +135,11 @@ function InitGame() {
     function update() {
         if (intro_terminated == 2) {
             planet.rotation += 0.0005;
-            planet.y = ScreenHeight + (ScreenHeight / 2) - (player.y / 60);
-            planet.x = ScreenWidth / 2 - (player.x / 60);
+            planet.y = ScreenHeight + (ScreenHeight / 2) - (player.y / 50);
+            planet.x = ScreenWidth / 2 - (player.x / 50);
 
-            background.y = ScreenHeight / 2 - (player.y / 60);
-            background.x = ScreenWidth / 2 - (player.x / 60);
+            background.y = ScreenHeight / 2 - (player.y / 50);
+            background.x = ScreenWidth / 2 - (player.x / 50);
 
             player.x = game.input.mousePointer.x;
             player.y = game.input.mousePointer.y;
@@ -383,9 +383,11 @@ function InitGame() {
         endgame_Score.classList.remove('d-none');
     }
 
+    const btnRefresh = document.getElementById('endgame-score-refresh');
     const btnEndgame = document.getElementById('endgame-score-submit');
 
     btnEndgame.addEventListener('click', addScore);
+    btnRefresh.addEventListener('click',RefreshPage);
 
     function addScore(name, accuracy, score) {
         var input_name = document.getElementById('input_name');
@@ -405,6 +407,10 @@ function InitGame() {
         }
         console.log(data);
     };
+
+    function RefreshPage(){
+        window.location.reload();
+    }
 
 
 
