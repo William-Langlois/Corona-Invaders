@@ -277,7 +277,7 @@ function InitGame() {
     }
 
     function createVirus(vir) {
-        virus = vir.physics.add.image(getRandom(50, ScreenWidth - 50), getRandom(-150, -1500), 'virus1');
+        virus = vir.physics.add.image(getRandom(50, ScreenWidth - 50), getRandom(-100, -1200), 'virus1');
         virus.scale = 0.1;
         virus.body.collideWorldBounds = true;
         virus.checkWorldBounds = true;
