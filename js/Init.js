@@ -1,3 +1,4 @@
+//Configure and initialize firebase connection
 const firebaseConfig = {
     apiKey: "AIzaSyBnBa-76xV5FN_pD6Rg-27Ad0bm3q3rYvQ",
     authDomain: "corona-invaders.firebaseapp.com",
@@ -12,10 +13,16 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+//Initialize mulitple website functions
 function Init(){
     NavInit();
     loginInit();
 }
+//Login with GitHub
 function githublogin() {
-    toggleSignIn()
+    toggleSignIn();
+}
+//Logout with GitHub
+function githublogout() {
+    toggleSignOut();
 }
