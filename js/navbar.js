@@ -1,6 +1,5 @@
 function NavInit() {
 <!-- DOM Elements Variable -->
-
     var linkHome = document.getElementById('nav-link-home');
     var linkLogin = document.getElementById('nav-link-login');
     var linkPlay = document.getElementById('nav-link-play');
@@ -8,6 +7,7 @@ function NavInit() {
     var linkProfile = document.getElementById('nav-link-profile');
     var linkLogout = document.getElementById('nav-link-logout');
 
+    //foreach navbar button , when it's pressed : set the button red and open the corresponding panel
     linkHome.addEventListener('click',function () {
         let lastActive = document.getElementsByClassName('nav-link-active');
         if (lastActive[0] != ""){
