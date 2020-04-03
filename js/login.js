@@ -35,10 +35,27 @@ function loginInit() {
 
     // Add a realtime listener
     firebase.auth().onAuthStateChanged(firebaseUser => {
+
+        var linkLogin = document.getElementById('nav-link-login');
+        var linkPlay = document.getElementById('nav-link-play');
+        var linkScoreboard = document.getElementById('nav-link-scoreboard');
+        var linkProfile = document.getElementById('nav-link-profile');
+        var linkLogout = document.getElementById('nav-link-logout');
+
         if (firebaseUser) {
             console.log(firebaseUser);
+            linkLogin.classList.add('d-none');
+            linkPlay.classList.remove('d-none');
+            linkScoreboard.classList.remove('d-none');
+            linkProfile.classList.remove('d-none');
+            linkLogout.classList.remove('d-none');
         } else {
-            console.log('not logged in');
+            console.log('logged out');
+            linkLogin.classList.remove('d-none');
+            linkPlay.classList.add('d-none');
+            linkScoreboard.classList.add('d-none');
+            linkProfile.classList.add('d-none');
+            linkLogout.classList.add('d-none');
         }
     });
 

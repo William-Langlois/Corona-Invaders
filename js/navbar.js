@@ -55,7 +55,7 @@ function NavInit() {
         if (lastActive[0] != ""){
             lastActive[0].classList.remove('nav-link-active')
         }
-        linkProfile.classList.add('nav-link-active')
+        linkProfile.classList.add('nav-link-active');
         document.getElementById('scoreboard').style.display='none';
     });
 
@@ -69,4 +69,5 @@ function NavInit() {
     });
 
 }
+
 
