@@ -23,4 +23,10 @@ function toggleSignIn() {
     });
     document.getElementById('githublogin').addEventListener('click', toggleSignIn, false);
 
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            document.getElementById('githublogin').textContent = 'Logged with Github';
+        }
+    });
 }
+
